@@ -1,0 +1,20 @@
+volumes:
+  dbdata:
+x-db: &default-db
+  image: postgres:11.3
+  environment:
+    - LC_ALL=C.UTF-8
+services:
+  postgres:
+    <<: *default-db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - dockernet
+networks:
+  dockernet:
+    name: subsocial
