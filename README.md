@@ -59,10 +59,3 @@ npm run start:dev
 ```
 
 After performing those operations a server will start. A default port is 3000.
-
-## Tests
-To properly launch tests you need to bootstrap a postgres image from a docker-compose first
-
-```bash
-yarn test
-```
