@@ -14,7 +14,7 @@ export class PostsEntity {
     @Column({ nullable: true })
     body: string;
 
-    @Column({ nullable: true })
+    @Column('text', { nullable: true, array: true })
     tags: any[];
 
     @Column({ nullable: true })
@@ -29,6 +29,6 @@ export class PostsEntity {
     @Column({ nullable: true })
     syncedContentId: string;
 
-    @CreateDateColumn({ type: 'timestamp', default: 'CURRENT_TIMESTAMP(13)'})
+    @CreateDateColumn({ type: 'timestamp', default: 'now()' })
     createdAtTime: number;
 }

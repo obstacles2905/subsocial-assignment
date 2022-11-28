@@ -9,17 +9,3 @@ schema-tests.gql
 schema.gql
 schema.graphql
 coverage/*
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-
-# compose file for macOS
-docker-compose.override.yml
-
-# ConarCloud test report
-test-report.xml
-
-# Uploads
-src/uploads/*.pdf

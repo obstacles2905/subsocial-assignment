@@ -16,4 +16,5 @@ export const dbConfig: TypeOrmModuleOptions = {
     extra: {
         charset: "utf8mb4_unicode_ci",
     },
+    synchronize: true
 };

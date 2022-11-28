@@ -4,6 +4,8 @@ import { GraphQLModule } from "@nestjs/graphql";
 import { PostsModule } from "./posts/posts.module";
 import { dbConfig } from "./db.config";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { SubsocialModule } from "./integration/subsocial.module";
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
     imports: [
@@ -11,25 +13,15 @@ import { TypeOrmModule } from "@nestjs/typeorm";
         TypeOrmModule.forRoot({
             ...dbConfig
         }),
+        ScheduleModule.forRoot(),
         PostsModule,
+        SubsocialModule,
         GraphQLModule.forRoot({
             installSubscriptionHandlers: true,
                 autoSchemaFile: "schema.graphql",
                 debug: true,
                 playground: true,
-                stopOnTerminationSignals: true,
-                subscriptions: {
-                    'subscriptions-transport-ws': {
-                        onConnect: (connectionParams, context, connect) => {
-                        return {
-                            req: { headers: {
-                              ...connectionParams,
-                              'authorization': connectionParams.Authorization,
-                            }, ...connect}
-                        }
-                      }
-                    },
-                  },
+                stopOnTerminationSignals: true
          }),
     ],
     providers: [],
